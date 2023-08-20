@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 50px;
+            height: 80px;
+            background-color: hsla(120, 60%, 70%, 1);
+            transition: 4s;
+        }
+
+        body{
+            padding: 40px 80px; /* 아래위 / 좌우 */
+        }
+    </style>
+    <script>
+        function mOk(pGbn){ //파라미트 = 함수에 던져주는 정보
+            lObj = document.getElementById("idDiv");
+            if(pGbn=="trans"){
+                lObj.style.transform = `translate(50px, 100px)`;  // 역따옴표 영어 키로 원화 자리
+                lObj.style.width = '120px';
+                //따옴표는 값 자체를 변화. 트렌스폼+ 역따옴표는 괄호 안 값을 출력해라 
+            }
+            else if(pGbn=="reset"){
+                window.location.reload();
+                //reload는 새로고침 
+            }
+            else if(pGbn=="rot"){
+               lObj.style.transform = `rotate(135deg)`
+            }
+            else if(pGbn=="rotX"){
+               lObj.style.transform = `rotateX(150deg)`
+            }
+            else if(pGbn=="rotY"){
+               lObj.style.transform = `rotateY(150deg)`
+            }
+            else if(pGbn=="rotZ"){
+               lObj.style.transform = `rotateZ(150deg)`
+            }
+            else if(pGbn=="scl"){
+                lObj.style.transform = `scale(2, 4)`
+            }
+            else if(pGbn=="skewX"){
+                lObj.style.transform = `skewX(45deg)`
+            }
+            else if(pGbn=="skewY"){
+                lObj.style.transform = `skewY(45deg)`
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="mOk('trans');"> translate </button>
+    <button onclick="mOk('rot');"> roatate </button>
+    <button onclick="mOk('rotX');"> roatateX </button>
+    <button onclick="mOk('rotY');"> roatateY </button>
+    <button onclick="mOk('rotZ');"> roatateZ </button>
+    <button onclick="mOk('scl');"> scale </button>
+    <button onclick="mOk('skewX');"> skewX </button>
+    <button onclick="mOk('skewY');"> skewY </button>
+    <button onclick="mOk('reset');"> reset </button>
+    <div id="idDiv"></div>
+</body>
+</html>

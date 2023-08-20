@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #idHsl{
+            width: 80vw; height: 30vh; 
+            /* 현재 화면상의 너비, 높이 (vh, vw) */
+            border: 5px ridge hsl(120, 100%, 50%);
+            background-color: hsl(240, 97%, 87%);
+            border-radius: 10px 20px 30px 4px;
+            /* 왼쪽 위, 오른쪽 위, 오르쪽 아래, 왼쪽 아래 */
+        }
+
+        #idHsla {
+            width: 80vw; height: 30vh; 
+            /* 현재 화면상의 너비, 높이 (vh, vw) */
+            border: 5px ridge hsl(120, 100%, 50%);
+            background-color: hsla(240, 97%, 87%, 0.5);
+            border-radius: 0px 0px 20px 0px;
+        }
+
+        body{
+            background-color: hsl(120, 50%, 65%);
+        }
+    </style>
+</head>
+<body>
+    <div id="idHsl"> Hsl 연습 </div>
+    <div id="idHsla"> Hsla 연습 </div>
+
+</body>
+</html>

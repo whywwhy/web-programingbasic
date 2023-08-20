@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=h, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #idPrnt{
+            width: 80vw;
+            height: 120vh;
+            background-color: hsla(120, 60%, 60%, 1);
+            position: relative;
+        }
+
+        #idChld{
+            width: 80px;
+            height: 80px;
+            background-color: hsla(240, 60%, 60%, 1);
+       
+            
+        }
+
+        @keyframes mAni1{
+            from {background-color: hsla(240, 60%, 60%, 1);
+            left: 10px; top: 10px; }
+            to {background-color: hsla(0, 60%, 60%, 1);
+            left: 200px; top: 200px; }
+        }
+
+        @keyframes mAniMulti{
+            0% {background-color: hsla(0, 60%, 60%, 1); left: 0px; top: 0px; }
+            20% {background-color: hsla(20, 60%, 60%, 1); left: 30px; top: 30px; }
+            40% {background-color: hsla(60, 60%, 60%, 1); left: 60px; top: 60px; }
+            60% {background-color: hsla(120, 60%, 60%, 1); left: 90px; top: 90px; }
+            80% {background-color: hsla(240, 60%, 60%, 1); left: 120px; top: 120px; }
+            100% {background-color: hsla(290, 60%, 60%, 1); left: 150px; top: 150px; }
+        }
+
+    </style>
+    <script>
+        function mOk(pGbn){
+            lChld = document.querySelector('#idChld');
+
+            if(pGbn=="stat")
+            {
+                lChld.style.position = "static";
+                lChld.style.animation ="mAni1 4s forwards";
+            }
+            else if(pGbn=="rel")
+            {
+        
+                lChld.style.position = "relative";
+                lChld.style.animation ="mAni1 4s forwards";
+            }
+            else if(pGbn=="abs")
+            {
+                lChld.style.position = "absolute"; //부모가 non static 포지션이여야 함.
+                lChld.style.animation ="mAniMulti 4s forwards infinite alternate";
+                //infinite 끝없이 실행됨 alternate 다시 역재생? 돌아가기 그런 느낌...
+            }
+            else if(pGbn=="fix")
+            {
+                lChld.style.position = "fixed";
+                lChld.style.animation ="mAni1 4s forwards";
+            }
+            else if(pGbn=="reset"){
+                window.location.reload();
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <button onclick="mOk('stat')"> static </button>
+    <button onclick="mOk('rel')"> relative </button>
+    <button onclick="mOk('abs')"> absolute </button>
+    <button onclick="mOk('fix')"> fixed </button>
+    <button onclick="mOk('reset')"> reset </button>
+    
+    <div> hello...  </div>
+    <div> i hate code up... </div>
+    <div> hello world...  </div>
+    <div> oh my oh my god.. /div>
+    <div> new jeans jjang </div>
+
+    <div id="idPrnt">
+        <div> div child1 </div>
+        <div> div child2 </div>
+        <div> div child3 </div>
+        <div id="idChld"> Bae Chaehui     // 1-4</div>
+        <div> div child5 </div>
+    </div>
+</body>
+</html>
+
+

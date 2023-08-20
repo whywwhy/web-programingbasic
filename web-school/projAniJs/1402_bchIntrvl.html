@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #idPrnt{
+            width: 80vw; height: 80vh;
+            background-color: hsla(150, 60%, 60%, 1);
+            position: relative;
+            /* non static!!! relative or absolute */
+        }
+
+        #idChld{
+            width: 80px; height: 80px;
+            background-color: hsla(300, 100%, 60%, 1);
+            position: absolute;
+            transition: 1.3s;
+        }
+    </style>
+    <script>
+        var idIntrvl=0; //전역변수로 선언해야 함
+        const mOk = () => {
+            let lBtn = document.querySelector("#idBtn");
+            let lChld = document.querySelector("#idChld");
+            let ltext = document.getElementById("idBtn").textContent.trim();
+            
+            
+
+            if(ltext=="start")
+            {
+
+                lBtn.textContent = "stop";
+                //가로 left or  right
+                lChld.style.left="0%";
+                lChld.style.top="0%";
+                //세로방향
+
+                idIntrvl = setInterval(mIntrvl, 1000); //계속 반복, 기간을 설정(1000이 기간) 동안 mIntrvl(함수)을 실행
+   
+                function mIntrvl(){
+                    let sLeft = lChld.style.left;
+                    let sTop = lChld.style.top ;
+
+                    let lLeft = Number(sLeft.substring(0, sLeft.length-1)); //형 변화 위해 
+                    let lTop = Number(sTop.substring(0, sTop.length-1));
+
+                    // alert("("+lLeft+","+lTop+")"); 
+
+                    lLeft =(lLeft +2)%52;
+                    lTop = (lTop +2)%52;
+
+
+                    lChld.style.left = lLeft + "%"
+                    lChld.style.top = lTop + '%'
+
+                    lChld.textContent = "("+lChld.style.left+","+lChld.style.top+")";
+
+                    //substring(처음 시작 값, 끝 값) - 1234% 1을 불려올려면 0, 1 3을 불러울려면 2, 3, 34를 가져오려면 2, 4
+                    // 끝 값 가져올때는 lenth-1을 사용 할 수 있다.
+
+
+                    // lChld.style.backgroundColor = lChld.style.backgroundColor + 100;
+                }
+            }
+
+            else{
+                lBtn.textContent = "start";
+                    clearInterval(idIntrvl);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="mOk();" id="idBtn"> start </button>
+    <div id="idPrnt">
+        <div id="idChld">
+            
+        </div>
+    </div>
+</body>
+</html>

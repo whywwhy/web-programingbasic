@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .clsPrnt{
+            /* 여러개 사진 사용 위해 클리스로 잡음 */
+            width: 98vw; height: 70vh;
+            background-color: rgba(20, 140, 40, 0.6);
+            margin: 1vh auto; /*위 아래 좌 우*/
+            /*바깥 여백은 margin, vh는 위 아래 백분률, 안쪽 여백이 padding*/          
+            position: relative;
+            /* abosulte는 자기 영역을 차지하지 않기 때문에 밑에 문구등등 보이지 않음. 따라서 밑에 자식 있으면 relative 사용 */
+        }
+
+        .clsDot{
+            cursor: pointer; 
+            /* 동그라미 위에 손 올리면 손가람 모양으로 변함 */
+            display: inline-block;
+            /* inline은 줄이 안바뀌고 block은 줄이 바뀜, 즉 inline bolck은 줄이 안바뀌고(inline) width와 height가 바뀜(block) */
+            width: 3vh; height: 3vh;
+            border-radius: 50%;
+            /* 블럭 안 내용이 들어갈때 블럭의 50%, 즉 각 모서리의 50%, 반씩 점을 찍어서 둥글게 찍는 것 */
+            /* transition-timing-function: ease; */
+            transition: 0.6s ease;
+            margin: 0vw 0.8vw;
+            background-color: #bbb;
+        }
+        
+        .clsSlde{
+            width: 100%; height: 100%;
+            /* 부모 영역 크기의 100% */
+            position: relative;
+        }
+
+        .clsFade{
+            display: none;
+            /* 보이지 않도록 처리 */
+        }
+
+        .clsSlde img{
+            width: 100%; height: 100%;
+        }
+
+        .clsPageTxt{
+            position: absolute;
+            /* absoulte는 주석됨. 시험 */
+            color: hsla(0, 10%, 90%, 1);
+            top: 1vh;
+            left: 1vh;
+        }
+
+        .clsCptn{
+            position: absolute;
+            bottom: 1vh;
+
+            width: 100%;
+            text-align: center;
+            /* 글자 가로 정렬해서 가운데로 만든느 기법 */
+
+            color: hsla(0, 10%, 90%, 1);
+        }
+    </style>
+
+    <script>
+        function mCurrent(pPage){
+            //alert(pPage);
+            //mcurrnet(slide) 구현, arrSlides 보이지 않고 해당 슬라이드만 보이게
+      
+         let arrSlide = document.querySelectorAll(".clsSlde");
+        // 0,1,2 까지 돌아 3번실행중요! 부등호가 들어감 시험!!
+         for(let i=0; i<arrSlide.length ; i++){
+            arrSlide[i].style.display="none";
+        }
+        arrSlide[pPage-1].style.display="block";
+
+     }
+
+     window.onload=function(){
+        mCurrent(2);
+     }
+
+    </script>
+
+</head>
+<body>
+    <div class="clsPrnt">
+        <div class="clsSlde clsFade">
+            <!-- slde 보여주기 fade 숨기기 -->
+            <div class="clsPageTxt"> 1/3 </div>
+            <img src="http://arabbit.link/images/aurora.jpg">
+            <div class="clsCptn"> aurora </div>
+        </div>
+        <div class="clsSlde clsFade">
+            <div class="clsPageTxt"> 2/3 </div>
+            <img src="http://arabbit.link/images/canyon.jpg">
+            <div class="clsCptn"> canyon </div>
+        </div>
+        <div class="clsSlde clsFade">
+            <div class="clsPageTxt"> 3/3 </div>
+            <img src="http://arabbit.link/images/mountain.jpg">
+            <div class="clsCptn"> mountain </div>
+        </div>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <span class="clsDot" onclick="mCurrent('1');"> </span>
+        <span class="clsDot" onclick="mCurrent('2');"> </span>
+        <span class="clsDot" onclick="mCurrent('3');"> </span>
+    </div>
+</body>
+</html>

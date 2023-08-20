@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        *{
+            text-align: center;
+        }
+
+    
+
+        .clsDiv{
+            width: 10vw; height: 15vh;
+            /* background-color: tomato; */
+            transition: 4s;
+            border: 2px solid;
+            
+        }
+
+        #idLnr{
+            transition-timing-function: linear;
+            /* 등속 */
+            background-color: tomato;
+            border: 5px solid white;
+            border-radius: 10px 0px 0px 0px;
+        }
+
+     
+        #idEase{
+            transition-timing-function: ease;
+            /* 천천 - 빠름 - 천천 */
+            background-color: lightsalmon;
+            border: 5px solid white;
+            border-radius: 0px 10px 0px 0px;
+        }
+
+        #idEaseIn{
+            transition-timing-function: ease-in;
+            /* 처음 시작할때 입구 천천히 */
+            background-color: rgb(255, 255, 123);
+            border: 5px solid white;
+            border-radius: 0px 0px 10px 0px;
+        }
+
+        #idEaseOut{
+            transition-timing-function: ease-out;
+            /* 나중에 나갈때 천천히 */
+            background-color: lightseagreen;
+            border: 5px solid white;
+            border-radius: 0px 0px 0px 10px;
+        }
+
+        #idEaseInOut{
+            transition-timing-function: ease-in-out;
+            /*들어가고 나갈때 천천히 움직이기*/
+            background-color: lightskyblue;
+            border: 5px solid white;
+            border-radius: 0px 10px;
+            
+        }
+
+    </style>
+
+    <script>
+        const mOk = () => {
+            //const 상수, const mOk 상수 변수 / 변수에 함수를 가질 수 있다~
+        // function mOk(){
+
+
+            // alert(document.getElementById("idBtn").textContent);
+            // var lLnr = document.getElementById("idLnr");
+            // var lEase = document.getElementById("idEase");
+            // var lEaseIn = document.getElementById("idEaseIn");
+            // var lEaseOut = document.getElementById("idEaseOut");
+            // var lEaseInOut = document.getElementById("idEaseInOut");
+
+            let arrDiv = document.querySelectorAll(".clsDiv")
+            //alert(arrDiv.length);
+            var ltext = document.getElementById("idBtn").textContent;
+            let lWidth="";
+
+            if(ltext=="transition")
+            {   
+                // lLnr.style.width = "90vw";
+                // lEase.style.width = "90vw";
+                // lEaseIn.style.width = "90vw";
+                // lEaseOut.style.width = "90vw";
+                // lEaseInOut.style.width = "90vw";
+                
+                document.getElementById("idBtn").textContent = "initialization";
+                lWidth = "90vw";
+            }
+            else
+            { 
+                // lLnr.style.width = "10vw";
+                // lEase.style.width = "10vw";
+                // lEaseIn.style.width = "10vw";
+                // lEaseOut.style.width = "10vw";
+                // lEaseInOut.style.width = "10vw";
+
+                 document.getElementById("idBtn").textContent = "transition";
+                 lWidth = "10vw";
+            }
+
+            for(let i = 0; i < arrDiv.length; i++){ // =금지, 0~5까지면 6번 돌게 됨
+                arrDiv[i].style.width = lWidth;
+            }
+
+
+            // arrDiv.forEach((pItem, pIdx, pArr)=>{
+            //     //첫번째 배열의 항목, 두번째 몇번째 위치인가, 세번째 배열 그 자체
+            //     pItem.style.width = lWidth;
+            // });
+
+                
+            
+            // var lDiv = document.getElementById("idDiv")
+            // lDiv.style.width = "90vw";
+            // lDiv.style.height = "90vh";
+            // lDiv.style.background = "lightsalmon";
+        }
+    </script>
+</head>
+<body>
+    <button onclick="mOk();" id="idBtn"> transition </button>
+    <div> welcome to transition world! </div>
+    <hr>
+    <div class="clsDiv" id="idLnr"> linear </div>
+    <div class="clsDiv" id="idEase"> ease </div>
+    <div class="clsDiv" id="idEaseIn"> ease-in </div>
+    <div class="clsDiv" id="idEaseOut"> ease-out </div>
+    <div class="clsDiv" id="idEaseInOut"> ease-in-out </div>
+</body>
+</html>

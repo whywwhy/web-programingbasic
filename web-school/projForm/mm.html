@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> let's study about form! </title>
+
+    <style>
+        h2{background-color: yellow; color: red; 
+        text-align: center;}
+
+        input{background-color: greenyellow; color: green;}
+
+        .cls1{color: green;}
+
+        .cls2{display: inline-block;
+            width: 6%;
+            text-align: right;
+            color: brown;}
+    </style>
+
+    <script>
+        function mChk(){
+            var lFm = document.fm;
+            var lGrd = lFm.grd;
+            var lCls = lFm.cls;
+            var lAccessKey = lFm.lAccessKey;
+            // 폼에서 가져와서 Fm, 길게 다 적는걸 방지하기 위해서 처음에 document
+            var lNum = document.getElementById('idNum')
+            // id로 찾는 법
+            if(lGrd.value=='')
+            {
+                alert("☆plz select your grade☆");
+                lGrd.focus();
+                return false;
+            }
+
+            else if(lCls.value=='' || lCls.value==0) //또는|| 
+            {
+                alert("★plz select your class★");
+                lCls.focus(); //안치면 그쪽에 확인 되게~
+                return false; //다시 화면으로 돌아가기 위해 return false
+            }
+
+            else if(lNum.value=='')
+            {
+                alert("✦plz input your number✦");
+                lNum.focus();
+                return false;
+            }
+
+            else if(isNaN(lNum.value))
+            {
+                alert("✧plz input only number✧");
+                lNum.focus();
+                return false;
+            } 
+            else if(lAccessKey.value.length != 4)
+            {
+                alert("✯plz input access key✯")
+                lAccessKey.focus();
+                return false;
+            }
+            else
+            lFm.submit(); //모두 통과되었을때(위의 조건 모두 충족) 서버로 보낸다.
+            //하나 밖에 없어서 중괄호 사용 노노
+  
+        }
+    </script>
+</head>
+
+<body>
+    <h2> welcome to form world </h2>
+    <form name="fm" method="post" action="http://arabbit.link/dirSw/insrtHstry.php" onsubmit="return false;">
+        <!-- action - form이 가는 위치, onsubmit 서버로 정보가 날아가는것 방지 -->
+        <div>
+            <label class="cls2"> 학년: </label>
+             <!-- <input type="text" name="grd" placeholder="숫자만"> -->
+            <input id="idRd1" type="radio" name="grd" value="1">
+                <label class="cls1" for="idRd1"> 1학년 </label>
+            <input id="idRd2" type="radio" name="grd" value="2">
+                <label class="cls1" for="idRd2"> 2학년 </label>
+            <input id="idRd3" type="radio" name="grd" value="3">
+                <label class="cls1" for="idRd3"> 3학년 </label>
+        </div>
+
+        <div>
+            <label class="cls2"> 반: </label>
+             <!-- <input type="text" name="cls" placeholder="숫자만"> -->
+             <select name="cls" id="">
+                <option value="0">
+                    반 선택
+                </option>
+                <option value="1">
+                    1반
+                </option>
+                <option value="2">
+                    2반
+                </option>
+                <option value="3">
+                    3반
+                </option>
+                <option value="4">
+                    4반
+                </option>
+             </select>
+        </div>
+
+        <div>
+            <label class="cls2"> 번호: </label>
+             <input type="text" id="idNum" name="num" placeholder="숫자만">
+        </div>
+
+        <div>
+            <label class="cls2"> 이름: </label>
+             <input type="text" name="nm" placeholder="한글로">
+        </div>
+
+        <div>
+            <label class="cls2"> 구분자1: </label>
+             <input type="text" name="gbn1" placeholder="한글로">
+        </div>
+
+        <div>
+            <label class="cls2"> 구분자2: </label>
+             <input type="text" name="gbn2" placeholder="한글로">
+        </div>
+       
+       <div>
+            <label class="cls2">  인증키: </label>
+             <input type="password" name="accessKey">
+        </div>
+
+        <div>
+             <input type="submit" value="전송하기" onclick="mChk();">
+        </div>
+       
+
+    </form>
+</body>
+</html>

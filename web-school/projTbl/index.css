@@ -1,0 +1,16 @@
+th, td{
+    border: 5px outset darkolivegreen;
+    border-radius: 3px;
+}
+
+/* table{
+    border-collapse: collapse;
+} */
+table{
+    background-color: whitesmoke;
+}
+
+th{
+    color: whitesmoke;
+    background-color: rgb(23, 82, 23);
+}
